@@ -1,0 +1,33 @@
+<%- include("header") -%>
+
+    <div class="box" id="heading">
+        <h1><%= listTitle %></h1>  <!-- This "<..> are ejs tags.value for kindOfDay will be generated in app.js -->
+    </div>
+
+    <div class="box">
+        <% newListItems.forEach(function(item){ %>
+
+            <form action="/delete" method="post">
+                <div class="item">   
+                    <input type="checkbox" name="checkbox" value="<%= item._id %>" onChange="this.form.submit()">  <!-- this onCgange() will run if the checkboxchanges state. It sneds info to /delete b as post request -->
+                    <p><%= item.name %></p>  <!-- In value varaible we get the id of "item" i.e checkbox than got clicked and the id of we can say which id box was checked-->
+                </div>
+                <input type="hidden" name="listName" value="<%= listTitle %>"> </form> </input> <!--It can't be seen or modified by the user -->
+            </form>
+        <% }) %>
+        
+        
+        
+
+            <form class="item" action="/" method="post">
+                <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                <button type="submit" name="list" value=<%=listTitle%>>+</button>
+            </form>
+        
+    </div>
+
+<%- include("footer") -%>
+
+   
+
+
